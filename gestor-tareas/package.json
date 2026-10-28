@@ -1,2 +1,0 @@
-{"name":"gestor-tareas","version":"1.0.0","private":true,"scripts":{"start":"node backend/servidor.js","test":"node --test backend/pruebas.test.js"}}
-
