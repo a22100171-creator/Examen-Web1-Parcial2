@@ -1,0 +1,84 @@
+/* Diseño sencillo: fondo claro, tarjetas blancas y un solo color principal. */
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #25352d;
+  background: #f4f6f4;
+  --principal: #2e6b50;
+  --borde: #dce3de;
+}
+* { 
+  box-sizing: border-box; 
+}
+body {
+  margin: 0; 
+}
+main { width: min(820px, calc(100% - 36px)); margin: 48px auto; }
+header { margin-bottom: 28px; }
+h1 { font-size: 34px; letter-spacing: -1px; margin: 0 0 6px; font-weight: 650; }
+header p { color: #6c7971; margin: 0; font-size: 15px; }
+.card { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 26px; margin-bottom: 20px; }
+h2 { font-size: 18px; font-weight: 600; margin: 0 0 22px; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; }
+input, textarea, select, button { font: inherit; font-size: 14px; }
+input, textarea, select {
+  width: 100%; background: #fff; border: 1px solid var(--borde);
+  border-radius: 6px; padding: 11px 12px; color: #25352d;
+}
+input::placeholder, textarea::placeholder { color: #87928b; }
+form > input, form > textarea { margin-bottom: 18px; }
+textarea { resize: vertical; min-height: 88px; }
+input:focus, textarea:focus, select:focus { outline: 2px solid #a5c7b3; outline-offset: 1px; }
+button { border: 1px solid var(--principal); border-radius: 6px; background: var(--principal); color: #fff; padding: 11px 17px; font-weight: 600; cursor: pointer; }
+button:hover { background: #24553f; }
+button:focus-visible { outline: 3px solid #a5c7b3; outline-offset: 3px; }
+button:disabled { opacity: .6; cursor: wait; }
+.secondary { background: #fff; color: #4f6056; border-color: var(--borde); }
+.secondary:hover { background: #f1f5f2; }
+.form-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+.status-field { width: 200px; }
+.actions { display: flex; gap: 8px; }
+.filters { display: flex; gap: 12px; margin-bottom: 20px; }
+.filters input { flex: 1; min-width: 0; }
+.filters select { width: 190px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+th { font-size: 12px; color: #6a786f; font-weight: 600; padding: 0 12px 12px 0; border-bottom: 1px solid var(--borde); }
+td { padding: 17px 12px 17px 0; border-bottom: 1px solid #edf0ed; vertical-align: top; }
+th:last-child, td:last-child { padding-right: 0; text-align: right; }
+td:first-child { width: 60%; }
+.task-title { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.task-description { color: #6c7971; font-size: 13px; margin-top: 5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.badge { display: inline-block; border-radius: 5px; padding: 5px 8px; font-size: 12px; white-space: nowrap; }
+.pending { background: #fcf3dd; color: #886421; }
+.progress { background: #eaf1fb; color: #416792; }
+.done { background: #e9f3ec; color: #356b48; }
+.edit { padding: 5px 10px; font-size: 12px; font-weight: 500; }
+.empty { padding: 22px 0; text-align: center; color: #6c7971; }
+.empty p { margin: 0 0 8px; font-size: 14px; }
+.empty small { font-size: 12px; }
+.count { color: #6c7971; font-size: 12px; margin: 17px 0 0; }
+#mensaje { text-align: center; color: var(--principal); font-size: 14px; line-height: 1.5; }
+.error { color: #a43832 !important; font-size: 13px; }
+#error-formulario:empty, #mensaje:empty { display: none; }
+[hidden] { display: none !important; }
+
+/* En móviles, el formulario y los filtros se acomodan en una columna. */
+@media (max-width: 560px) {
+  main { margin: 28px auto; }
+  .card { padding: 20px; }
+  .form-bottom, .filters { flex-direction: column; align-items: stretch; gap: 14px; }
+  .status-field, .filters select { width: 100%; }
+  .actions { justify-content: flex-end; }
+  table { min-width: 410px; }
+  h1 { font-size: 30px; }
+}
+
+/* En móviles, cada fila se presenta como un bloque para evitar desplazamientos laterales. */
+@media (max-width: 560px) {
+  .table-wrap table { min-width: 0; }
+  table, tbody { display: block; }
+  thead { display: none; }
+  tr { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--borde); }
+  td { padding: 0; border: 0; }
+  td:first-child { width: auto; grid-column: 1 / -1; }
+}
